@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Vault VPN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: #f8f9fa;
+        }
+        header {
+            background: #ff6600;
+            padding: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 10px auto;
+            display: block;
+        }
+        .container {
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 18px;
+            background: #0088cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .download-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 18px;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .chat-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #ff6600;
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            line-height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        .chat-box {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 280px;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            display: none;
+        }
+        .chat-box textarea {
+            width: 100%;
+            height: 60px;
+            padding: 5px;
+        }
+        .chat-box button {
+            width: 100%;
+            padding: 10px;
+            background: #0088cc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo.png" alt="Fire Vault VPN" class="logo">
+        Fire Vault VPN
+    </header>
+
+    <div class="container">
+        <h2>🔥 ফায়ার ভল্ট VPN – আপনার সুরক্ষিত ব্রাউজিং সঙ্গী</h2>
+        <p>VPN ব্যবহার করে নিরাপদে ব্রাউজ করুন এবং আপনার ব্যক্তিগত তথ্য রক্ষা করুন।</p>
+        <p>বিস্তারিত তথ্য পেতে আমাদের টেলিগ্রাম চ্যানেলে জয়েন করুন এবং অ্যাপের উন্নতি নিয়ে পরামর্শ দিন!</p>
+        <a href="https://t.me/tricktime_x" class="btn">🔗 টেলিগ্রাম চ্যানেলে যোগ দিন</a>
+        <br><br>
+        <a href="https://yourdownloadlink.com" class="download-btn">⬇️ এখনই ডাউনলোড করুন</a>
+    </div>
+
+    <div class="chat-btn" onclick="toggleChat()">💬</div>
+
+    <div class="chat-box" id="chatBox">
+        <textarea id="message" placeholder="VPN নিয়ে আপনার মতামত লিখুন..."></textarea>
+        <button onclick="sendMessage()">✉️ পাঠান</button>
+    </div>
+
+    <script>
+        function toggleChat() {
+            var chatBox = document.getElementById("chatBox");
+            chatBox.style.display = (chatBox.style.display === "block") ? "none" : "block";
+        }
+
+        function sendMessage() {
+            var message = document.getElementById("message").value;
+            if (message.trim() !== "") {
+                var telegramBotToken = "YOUR_BOT_TOKEN";
+                var chatId = "YOUR_CHAT_ID";
+                var url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        alert("✅ মেসেজ পাঠানো হয়েছে!");
+                        document.getElementById("message").value = "";
+                        toggleChat();
+                    })
+                    .catch(error => alert("❌ মেসেজ পাঠাতে ব্যর্থ!"));
+            } else {
+                alert("⚠️ মেসেজ ফাঁকা রাখা যাবে না!");
+            }
+        }
+    </script>
+
+</body>
+</html>
